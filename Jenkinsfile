@@ -5,11 +5,19 @@ pipeline {
             }
       }
     stages {
+        stage('Fetch') {
+            steps {
+                echo "Fetching."
+                sh '''
+                cd new
+                python3 hello.py
+                '''
+            }
+        }
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                ls
                 python3 now.py
                 '''
             }
