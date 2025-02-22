@@ -8,8 +8,22 @@ pipeline {
     }
 
     stage('log') {
-      steps {
-        sh 'ls -la'
+      parallel {
+        stage('log') {
+          steps {
+            sh 'ls -la'
+          }
+        }
+
+        stage('') {
+          steps {
+            dockerNode(image: 'python:3.9.21-alpine3.21') {
+              sh 'python3 --version'
+            }
+
+          }
+        }
+
       }
     }
 
