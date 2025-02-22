@@ -15,7 +15,7 @@ pipeline {
           }
         }
 
-        stage('error') {
+        stage('py') {
           steps {
             dockerNode(image: 'mahmoudelassy/jap') {
               sh 'python3 --version'
